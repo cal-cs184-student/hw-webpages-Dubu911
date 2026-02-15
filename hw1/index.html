@@ -27,8 +27,8 @@
 	</head>
 	<body>
 		<div class="container">
-		<h1>CS184/284A Spring 2025 Homework 1 Write-Up</h1>
-		<div style="text-align: center;">Names: </div>
+		<h1>CS184/284A Spring 2026 Homework 1 Write-Up</h1>
+		<div style="text-align: center;">Names: Daeyoung Kim</div>
 
 		<br>
 
@@ -174,7 +174,7 @@
 		<ul>
 			<li><strong>L_ZERO</strong>: I always use level 0 (full resolution) no matter what.</li>
 			<li><strong>L_NEAREST</strong>: I compute the level and round it to the closest integer mip level.</li>
-			<li><strong>L_BILINEAR</strong>: I compute a fractional level and blend between the two closest mip levels (floor and ceil),
+			<li><strong>L_LINEAR</strong>: I compute a fractional level and blend between the two closest mip levels (floor and ceil),
 				so the transition between levels is smoother.</li>
 		</ul>
 
@@ -187,7 +187,7 @@
 		</p>
 		<p>
 			<strong>Level sampling (mipmapping):</strong>
-			Runtime speed is roughly similar to not using mipmaps. There are a few extra steps to compute the mip level, but it is not
+			The overhead is small compared to the texture filtering work. There are a few extra steps to compute the mip level, but it is not
 			a big overhead. Mipmaps require storing multiple levels, but each level is half the resolution of the previous one, so total
 			storage is less than double the level 0 texture. This works really well for reducing shimmering and moir&eacute; patterns on
 			objects that are far away or highly minified.
@@ -210,7 +210,7 @@
 				</td>
 				<td style="text-align: center;">
 				  <img src="../Image_hw1/task6_rate1_bilinearT_zeroL.png" width="400px"/>
-				  <figcaption>L_ZERO + P_BILINEAR</figcaption>
+				  <figcaption>L_ZERO + P_LINEAR</figcaption>
 				</td>
 			  </tr>
 			  <tr>
@@ -220,7 +220,7 @@
 				</td>
 				<td style="text-align: center;">
 				  <img src="../Image_hw1/task6_rate1_bilinearT_nearestL.png" width="400px"/>
-				  <figcaption>L_NEAREST + P_BILINEAR</figcaption>
+				  <figcaption>L_NEAREST + P_LINEAR</figcaption>
 				</td>
 			  </tr>
 			</table>
@@ -231,11 +231,11 @@
 			  <tr>
 				<td style="text-align: center;">
 				  <img src="../Image_hw1/task6_rate1_nearestT_bilinearL.png" width="400px"/>
-				  <figcaption>L_BILINEAR + P_NEAREST, sample rate 1</figcaption>
+				  <figcaption>L_LINEAR + P_NEAREST, sample rate 1</figcaption>
 				</td>
 				<td style="text-align: center;">
 				  <img src="../Image_hw1/task6_rate1_bilinearT_bilinearL.png" width="400px"/>
-				  <figcaption>L_BILINEAR + P_BILINEAR (trilinear), sample rate 1</figcaption>
+				  <figcaption>L_LINEAR + P_LINEAR (trilinear), sample rate 1</figcaption>
 				</td>
 			  </tr>
 			  <tr>
@@ -245,7 +245,7 @@
 				</td>
 				<td style="text-align: center;">
 				  <img src="../Image_hw1/task6_rate16_bilinearT_bilinearL.png" width="400px"/>
-				  <figcaption>L_BILINEAR + P_BILINEAR (trilinear), sample rate 16</figcaption>
+				  <figcaption>L_LINEAR + P_LINEAR (trilinear), sample rate 16</figcaption>
 				</td>
 			  </tr>
 			</table>
